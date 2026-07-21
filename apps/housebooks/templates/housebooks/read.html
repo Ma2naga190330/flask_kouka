@@ -1,0 +1,21 @@
+{% extends "housebooks/base.html" %}
+
+{% block title %}read{% endblock title %}
+
+{% block content %}
+    <h2>read</h2>
+    <table>
+        <tr>
+            <th>アカウント名</th>
+            <th>内訳</th>
+            <th>金額</th>
+        </tr>
+        {% for moneybook in moneybooks %}
+        <tr>
+            <td>{{moneybook.account_id}}</td>
+            <td>{{moneybook.comment}}</td>
+            <td>{{moneybook.price}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}

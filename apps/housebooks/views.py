@@ -12,3 +12,8 @@ hb = Blueprint(
 @hb.route("/")
 def index():
     return render_template("housebooks/index.html")
+
+@hb.route("/read", methods=["GET","POST"])
+def read():
+    moneybook = MoneyBooks.query.all()
+    return render_template("housebooks/read.html", moneybooks=moneybook)
