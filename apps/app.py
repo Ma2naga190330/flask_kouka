@@ -28,4 +28,6 @@ def create_app(config_key):
 
     from apps.account_manager import views as ac_view
     app.register_blueprint(ac_view.ac,url_prefix="/accounts")
+    from apps.housebooks import views as hb_view
+    app.register_blueprint(hb_view.hb,url_prefix="/housebooks")
     return app
