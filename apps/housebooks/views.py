@@ -1,4 +1,6 @@
 from flask import Flask,render_template,Blueprint
+from apps.app import db
+from apps.housebooks.models import MoneyBooks
 
 hb = Blueprint(
     "housebooks",
