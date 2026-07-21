@@ -1,0 +1,27 @@
+from flask_wtf import FlaskForm
+from wtforms import PasswordField,StringField,SubmitField,IntegerField
+from wtforms.validators import DataRequired,Email,Length
+
+class MoneyBookForm(FlaskForm):
+    account_id = IntegerField(
+        "アカウントid",
+        validators=[
+            DataRequired(message="アカウントidは必須です")
+        ]
+    )
+
+    comment = StringField(
+        "内訳",
+        validators=[
+            DataRequired(message="内訳は必須です")
+        ]
+    )
+
+    price = IntegerField(
+        "金額",
+        validators=[
+            DataRequired(message="金額は必須です")
+        ]
+    )
+
+    submit = SubmitField("新規登録")
