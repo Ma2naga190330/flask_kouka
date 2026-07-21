@@ -8,7 +8,7 @@ from apps.app import db
 from flask_login import login_user,logout_user
 
 ac = Blueprint(
-    "ac",
+    "accounts",
     __name__,
     template_folder="templates",
     static_folder="static"
@@ -30,14 +30,14 @@ def signup():
         # メールアドレスの重複チェック
         if account.is_duplicate_email():
             flash("指定のメールアドレスは登録済みです")
-            return redirect(url_for("ac.signup"))
+            return redirect(url_for("accounts.signup"))
         db.session.add(account)
         db.session.commit()
         login_user(account)
         # リダイレクト先をhousebooks.indexにする
         next_ = request.args.get("housebooks.index")
         if next_ is None or not next_.startswith("/"):
-            next_=url_for("ac.index")
+            next_=url_for("accounts.index")
         return redirect(next_)
     return render_template("signup.html",form=form)
 
@@ -50,7 +50,7 @@ def login():
         # ログイン情報が正しいか判断
         if account is not None and account.verify_password(form.password.data):
             login_user(account)
-            return redirect(url_for("ac.index"))
+            return redirect(url_for("accounts.index"))
         
         flash("メールアドレスかパスワードが不正です")
     return render_template("login.html",form=form)
@@ -58,4 +58,4 @@ def login():
 @ac.route("/logout")
 def logout():
     logout_user
-    return redirect(url_for("ac.login"))
+    return redirect(url_for("accounts.login"))
