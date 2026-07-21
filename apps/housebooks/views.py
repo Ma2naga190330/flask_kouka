@@ -2,6 +2,7 @@ from flask import Flask,render_template,Blueprint,redirect,url_for
 from apps.app import db
 from apps.housebooks.models import MoneyBooks
 from apps.housebooks.forms import MoneyBookForm
+from sqlalchemy import func
 hb = Blueprint(
     "housebooks",
     __name__,
@@ -15,8 +16,10 @@ def index():
 
 @hb.route("/read", methods=["GET","POST"])
 def read():
+    total = 0
     moneybooks = MoneyBooks.query.all()
-    return render_template("housebooks/read.html", moneybooks=moneybooks)
+    total = db.session.query(func.sum(MoneyBooks.price)).first()
+    return render_template("housebooks/read.html", moneybooks=moneybooks, total=total[0])
 
 @hb.route("/create", methods=["GET","POST"])
 def create():
