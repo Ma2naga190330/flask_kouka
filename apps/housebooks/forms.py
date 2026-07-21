@@ -25,3 +25,7 @@ class MoneyBookForm(FlaskForm):
     )
 
     submit = SubmitField("新規登録")
+
+# csrf回避のため
+class DeleteForm(FlaskForm):
+    pass

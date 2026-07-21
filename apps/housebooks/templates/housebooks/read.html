@@ -4,17 +4,22 @@
 
 {% block content %}
     <h2>read</h2>
+    <a href="{{url_for("housebooks.create")}}">作成</a>
     <table border="1">
         <tr>
+            <th>id</th>
             <th>アカウント名</th>
             <th>内訳</th>
             <th>金額</th>
+            <th>削除</th>
         </tr>
         {% for moneybook in moneybooks %}
         <tr>
+            <td>{{moneybook.id}}</td>
             <td>{{moneybook.account_id}}</td>
             <td>{{moneybook.comment}}</td>
             <td>{{moneybook.price}}</td>
+            <td><form action="{{url_for("housebooks.delete",moneybooks_id=moneybook.id)}}" method="POST">{{ delform.hidden_tag() }}<input type="submit" value="削除"></form></td>
         </tr>
         {% endfor %}
     </table>
