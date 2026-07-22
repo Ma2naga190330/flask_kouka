@@ -47,3 +47,17 @@ def delete(moneybooks_id):
     db.session.delete(moneybooks)
     db.session.commit()
     return redirect(url_for("housebooks.read"))
+
+@hb.route("/read/update/<int:moneybooks_id>", methods=["GET","POST"])
+def update(moneybooks_id):
+    form = MoneyBookForm()
+    moneybooks = MoneyBooks.query.filter_by(id=moneybooks_id).first()
+
+    if form.validate_on_submit():
+        moneybooks.account_id = form.account_id.data
+        moneybooks.comment = form.comment.data
+        moneybooks.price=form.price.data
+        db.session.add(moneybooks)
+        db.session.commit()
+        return redirect(url_for("housebooks.read"))
+    return render_template("housebooks/update.html",moneybooks=moneybooks,form=form)

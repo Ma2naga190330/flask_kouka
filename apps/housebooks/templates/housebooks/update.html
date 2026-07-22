@@ -1,0 +1,30 @@
+{% extends "housebooks/base.html" %}
+
+{% block title %}update{% endblock title %}
+
+{% block content %}
+    <h2>アップデート</h2>
+    <form action="{{url_for('housebooks.update',moneybooks_id=moneybooks.id)}}" method="POST" novalidate="novalidate">
+        {{form.csrf_token}}
+        <p>
+            {{form.account_id.label}}{{form.account_id(placeholder="アカウントid")}}
+        </p>
+        {% for error in form.account_id.errors %}
+        <span style="color: red;">{{error}}</span>
+        {% endfor %}
+        <p>
+            {{form.comment.label}}{{form.comment(placeholder="内訳")}}
+        </p>
+        {% for error in form.comment.errors %}
+        <span style="color: red;">{{error}}</span>
+        {% endfor %}
+        <p>
+            {{form.price.label}}{{form.price(placeholder="金額")}}
+        </p>
+        {% for error in form.price.errors %}
+        <span style="color: red;">{{error}}</span>
+        {% endfor %}
+        <p>{{form.submit()}}</p>
+    </form>
+{% endblock content %}
+

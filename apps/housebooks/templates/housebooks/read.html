@@ -20,6 +20,7 @@
             <td>{{moneybook.comment}}</td>
             <td>{{moneybook.price}}</td>
             <td><form action="{{url_for("housebooks.delete",moneybooks_id=moneybook.id)}}" method="POST">{{ delform.hidden_tag() }}<input type="submit" value="削除"></form></td>
+            <td><form action="{{url_for("housebooks.update",moneybooks_id=moneybook.id)}}" method="GET">{{ delform.hidden_tag() }}<input type="submit" value="更新"></form></td>
         </tr>
         {% endfor %}
     </table>

@@ -29,3 +29,5 @@ class MoneyBookForm(FlaskForm):
 # csrf回避のため
 class DeleteForm(FlaskForm):
     pass
+class UpdateForm(FlaskForm):
+    pass
