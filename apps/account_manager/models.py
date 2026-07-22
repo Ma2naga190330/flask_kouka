@@ -20,7 +20,7 @@ class Account(db.Model):
     """アカウントテーブル"""
     __tablename__ = 'accounts'
 
-    account_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String(255), unique=True, nullable=False, index=True)
     password = db.Column(db.String(255), nullable=False)  # ハッシュ化パスワード用
     create_at = db.Column(db.DateTime, default=lambda: datetime.now())
