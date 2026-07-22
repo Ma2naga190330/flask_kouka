@@ -5,33 +5,30 @@ from werkzeug.security import generate_password_hash,check_password_hash
 # 外部キー用
 from sqlalchemy.orm import relationship
 
-# 権限設定
-# class Permission():
-#     __tablename__="permissions"
+class Permission(db.Model):
+    """権限マスターテーブル"""
+    __tablename__ = 'permissions'
 
-#     id = db.Column(db.Integer,primary_key=True)
-#     class_name=db.Column(db.String)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    class_name = db.Column(db.String(50), nullable=False)
 
-#     accounts = relationship("Account",back_populates="permissions")
-#     def __repr__(self):
-#         return f"<Permissions(id={self.id}, class_name='{self.class_name}')>"
+    # リレーションシップ設定
+    accounts = db.relationship('Account', backref='permission', lazy=True)
 
-class Account(db.Model,UserMixin):
-    # テーブル名
-    __tablename__ = "accounts"
-    # カラムの設定
-    id = db.Column(db.Integer,primary_key=True)
-    account_name = db.Column(db.String,index=True)
-    email = db.Column(db.String,unique=True,index=True)
-    password_hash = db.Column(db.String)
-    created_at = db.Column(db.DateTime,default=datetime.now)
-    updated_at = db.Column(db.DateTime,default=datetime.now,onupdate=datetime.now)
-    # permission = db.Column(db.Integer,db.ForeignKey("premissions.id"))
+
+class Account(db.Model):
+    """アカウントテーブル"""
+    __tablename__ = 'accounts'
+
+    account_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    email = db.Column(db.String(255), unique=True, nullable=False, index=True)
+    password = db.Column(db.String(255), nullable=False)  # ハッシュ化パスワード用
+    create_at = db.Column(db.DateTime, default=lambda: datetime.now())
+    update_at = db.Column(db.DateTime, default=lambda: datetime.now(), onupdate=lambda: datetime.now())
     
-    # account = relationship("Account", back_populates="accounts")
+    # Permissions(id) への外部キー
+    permission = db.Column(db.Integer, db.ForeignKey('permissions.id'), nullable=False)
 
-    # def __repr__(self):
-    #     return f"<Account(id={self.id}, account_name='{self.account_name}', permission='{self.permission}')"
     @property
     def password(self):
         raise AttributeError("読み取り不可")
