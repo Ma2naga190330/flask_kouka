@@ -1,14 +1,14 @@
 {% extends "housebooks/base.html" %}
 
-{% block title %}read{% endblock title %}
+{% block title %}menu{% endblock title %}
 
 {% block content %}
-    <h2>read</h2>
+    <h2>menu</h2>
     <a href="{{url_for("housebooks.create")}}">作成</a>
     <table border="1">
         <tr>
             <th>id</th>
-            <th>アカウント名</th>
+            <th>アカウントid</th>
             <th>内訳</th>
             <th>金額</th>
             <th>削除</th>
