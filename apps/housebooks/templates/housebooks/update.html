@@ -7,19 +7,19 @@
     <form action="{{url_for('housebooks.update',moneybooks_id=moneybooks.id)}}" method="POST" novalidate="novalidate">
         {{form.csrf_token}}
         <p>
-            {{form.account_id.label}}{{form.account_id(placeholder="アカウントid")}}
+            {{form.account_id.label}}{{form.account_id(placeholder="アカウントid",value=moneybooks.account_id)}}
         </p>
         {% for error in form.account_id.errors %}
         <span style="color: red;">{{error}}</span>
         {% endfor %}
         <p>
-            {{form.comment.label}}{{form.comment(placeholder="内訳")}}
+            {{form.comment.label}}{{form.comment(placeholder="内訳",value=moneybooks.comment)}}
         </p>
         {% for error in form.comment.errors %}
         <span style="color: red;">{{error}}</span>
         {% endfor %}
         <p>
-            {{form.price.label}}{{form.price(placeholder="金額")}}
+            {{form.price.label}}{{form.price(placeholder="金額",value=moneybooks.price)}}
         </p>
         {% for error in form.price.errors %}
         <span style="color: red;">{{error}}</span>
