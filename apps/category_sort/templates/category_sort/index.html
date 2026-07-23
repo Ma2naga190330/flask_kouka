@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "category_sort/base.html" %}
 
 {% block title %}test{% endblock title %}
 
@@ -12,4 +12,5 @@
         {% endfor %}
         <p>{{form.submit()}}</p>
     </form>
+    <a href="{{url_for("housebooks.read")}}">メニューへ戻る</a>
 {% endblock content %}

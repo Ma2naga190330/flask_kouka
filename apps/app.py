@@ -27,7 +27,7 @@ def create_app(config_key):
     login_manager.init_app(app)
 
     from apps.account_manager import views as ac_view
-    app.register_blueprint(ac_view.ac,url_prefix="/accounts")
+    app.register_blueprint(ac_view.ac,url_prefix="/")
     from apps.housebooks import views as hb_view
     app.register_blueprint(hb_view.hb,url_prefix="/housebooks")
     from apps.category_sort import views as cs_view
