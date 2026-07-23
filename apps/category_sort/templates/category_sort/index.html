@@ -3,5 +3,13 @@
 {% block title %}test{% endblock title %}
 
 {% block content %}
-    <p>categoriesテスト</p>
+    <h2>カテゴリー診断</h2>
+    <form action="{{url_for("categories.index")}}" method="POST" novalidate="novalidate">
+        {{form.csrf_token}}
+        <p>{{form.category_name.label}}{{form.category_name(placeholder="分類したい単語を入力")}}</p>
+        {% for error in form.category_name.errors %}
+            <span style="color:red;">{{error}}</span>
+        {% endfor %}
+        <p>{{form.submit()}}</p>
+    </form>
 {% endblock content %}

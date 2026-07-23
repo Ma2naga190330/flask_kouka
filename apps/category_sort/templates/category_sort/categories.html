@@ -1,0 +1,9 @@
+{% extends "category_sort/base.html" %}
+
+{% block title %}category{% endblock title %}
+
+{% block content %}
+    <h2>『{{text}}』の分類結果</h2>
+    <p>{{category}}</p>
+    <a href="{{url_for("categories.index")}}">カテゴリー診断に戻る</a>
+{% endblock content %}
