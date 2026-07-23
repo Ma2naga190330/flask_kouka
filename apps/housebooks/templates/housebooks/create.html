@@ -7,26 +7,26 @@
     <form action="{{url_for('housebooks.create')}}" method="POST" novalidate="novalidate">
         {{form.csrf_token}}
         {% if current_user.is_authenticated %}
-            <p>{{form.account_id.label}}{{form.account_id(placeholder="アカウントid", value=current_user.id)}}</p>
+            <p>{{form.account_id.label}}：<br>{{form.account_id(placeholder="アカウントid", value=current_user.id)}}</p>
         {% else %}
-            <p>{{form.account_id.label}}{{form.account_id(placeholder="アカウントid")}}</p>
+            <p>{{form.account_id.label}}：<br>{{form.account_id(placeholder="アカウントid")}}</p>
         {% endif %}
         {% for error in form.account_id.errors %}
         <span style="color: red;">{{error}}</span>
         {% endfor %}
         <p>
-            {{form.comment.label}}{{form.comment(placeholder="内訳")}}
+            {{form.comment.label}}：<br>{{form.comment(placeholder="内訳")}}
         </p>
         {% for error in form.comment.errors %}
         <span style="color: red;">{{error}}</span>
         {% endfor %}
         <p>
-            {{form.price.label}}{{form.price(placeholder="金額")}}
+            {{form.price.label}}：<br>{{form.price(placeholder="金額")}}
         </p>
         {% for error in form.price.errors %}
         <span style="color: red;">{{error}}</span>
         {% endfor %}
-        <p>{{form.submit()}}</p>
+        <p>{{form.submit(class="btn-style")}}</p>
     </form>
     <a href="{{url_for("housebooks.read")}}">メニューに戻る</a>
 {% endblock content %}

@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
 </head>
 <body>
-    <header>
+    <header class="header">
+        <div class="left-instance">
+            <p>家計簿システム</p>
+        </div>
         <ul class="navbar-nav">
             {% if current_user.is_authenticated %}
             <li class="nav-item">
-                <span class="nav-link">アカウントid：{{current_user.id}}</span>
-            </li>
-            <li class="nav-item">
-                <span class="nav-link">アカウント名：{{current_user.account_name}}</span>
+                <span class="nav-link">{{current_user.account_name}}</span>
             </li>
             <li class="nav-item">
                 <a href="{{url_for('accounts.logout')}}" class="nav-link">ログアウト</a>
@@ -28,6 +29,9 @@
             {% endif %}
         </ul>
     </header>
-    {% block content %}{% endblock content %}
+    <content class="content">
+    {% block content %}
+    {% endblock content %}
+    </content>
 </body>
 </html>

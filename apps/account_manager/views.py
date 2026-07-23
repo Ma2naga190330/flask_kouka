@@ -10,8 +10,7 @@ from flask_login import login_user,logout_user
 ac = Blueprint(
     "accounts",
     __name__,
-    template_folder="templates",
-    static_folder="static"
+    template_folder="templates"
 )
 
 @ac.route("/")
