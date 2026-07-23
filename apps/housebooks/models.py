@@ -10,4 +10,4 @@ class MoneyBooks(db.Model):
     price = db.Column(db.Integer)
     create_at = db.Column(db.DateTime,default=datetime.now)
     update_at = db.Column(db.DateTime,default=datetime.now,onupdate=datetime.now)
-    deleted = db.Column(db.Boolean, default=False, nullable=False)
+    deleted = db.Column(db.Boolean, default=False)

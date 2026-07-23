@@ -5,29 +5,28 @@ from werkzeug.security import generate_password_hash,check_password_hash
 # 外部キー用
 from sqlalchemy.orm import relationship
 
+# 権限テーブル
 class Permission(db.Model):
-    """権限マスターテーブル"""
     __tablename__ = 'permissions'
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    class_name = db.Column(db.String(50), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    class_name = db.Column(db.String())
 
     # リレーションシップ設定
     accounts = db.relationship('Account', backref='permission', lazy=True)
 
-
-class Account(db.Model):
-    """アカウントテーブル"""
+# アカウントテーブル
+class Account(db.Model,UserMixin):
     __tablename__ = 'accounts'
-
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    email = db.Column(db.String(255), unique=True, nullable=False, index=True)
-    password = db.Column(db.String(255), nullable=False)  # ハッシュ化パスワード用
-    create_at = db.Column(db.DateTime, default=lambda: datetime.now())
-    update_at = db.Column(db.DateTime, default=lambda: datetime.now(), onupdate=lambda: datetime.now())
+    id = db.Column(db.Integer, primary_key=True)
+    account_name = db.Column(db.String(),index=True)
+    email = db.Column(db.String(), unique=True, index=True)
+    password_hash = db.Column(db.String())  # ハッシュ化パスワード用
+    create_at = db.Column(db.DateTime, default=datetime.now())
+    update_at = db.Column(db.DateTime, default=datetime.now(), onupdate=datetime.now())
     
     # Permissions(id) への外部キー
-    permission = db.Column(db.Integer, db.ForeignKey('permissions.id'), nullable=False)
+    permission_id = db.Column(db.Integer, db.ForeignKey('permissions.id'))
 
     @property
     def password(self):
