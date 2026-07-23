@@ -30,4 +30,6 @@ def create_app(config_key):
     app.register_blueprint(ac_view.ac,url_prefix="/accounts")
     from apps.housebooks import views as hb_view
     app.register_blueprint(hb_view.hb,url_prefix="/housebooks")
+    from apps.category_sort import views as cs_view
+    app.register_blueprint(cs_view.cs,url_prefix="/categories")
     return app
