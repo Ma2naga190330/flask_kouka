@@ -11,8 +11,8 @@ cs = Blueprint(
     static_folder="static"
 )
 
-@login_required
 @cs.route("/", methods=["GET","POST"])
+@login_required
 def index():
     form = CategoryForm()
     if form.validate_on_submit():

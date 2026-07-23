@@ -17,6 +17,7 @@ def index():
     return render_template("housebooks/index.html")
 
 @hb.route("/read", methods=["GET","POST"])
+@login_required
 def read():
     form = DeleteForm()
     moneybooks = MoneyBooks.query.filter_by(deleted=False).all()
@@ -27,6 +28,7 @@ def read():
     return render_template("housebooks/read.html", moneybooks=moneybooks, total=total, delform = form)
 
 @hb.route("/create", methods=["GET","POST"])
+@login_required
 def create():
     form = MoneyBookForm()
     if form.validate_on_submit():
@@ -52,6 +54,7 @@ def delete(moneybooks_id):
     return redirect(url_for("housebooks.read"))
 
 @hb.route("/read/update/<int:moneybooks_id>", methods=["GET","POST"])
+@login_required
 def update(moneybooks_id):
     form = MoneyBookForm()
     moneybooks = MoneyBooks.query.filter_by(id=moneybooks_id).first()
