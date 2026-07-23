@@ -16,7 +16,7 @@ ac = Blueprint(
 
 @ac.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("account_manager/index.html")
 
 @ac.route("/signup",methods=["GET","POST"])
 def signup():
@@ -40,7 +40,7 @@ def signup():
         if next_ is None or not next_.startswith("/"):
             next_=url_for("housebooks.read")
         return redirect(next_)
-    return render_template("signup.html",form=form)
+    return render_template("account_manager/signup.html",form=form)
 
 @ac.route("/login",methods=["GET","POST"])
 def login():
@@ -54,7 +54,7 @@ def login():
             return redirect(url_for("housebooks.read"))
         
         flash("メールアドレスかパスワードが不正です")
-    return render_template("login.html",form=form)
+    return render_template("account_manager/login.html",form=form)
 
 @ac.route("/logout")
 def logout():
