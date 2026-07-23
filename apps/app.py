@@ -18,7 +18,7 @@ login_manager = LoginManager()
 login_manager.login_view ="accounts.signup"
 login_manager.login_message=""
 
-def create_app(config_key):
+def create_app(config_key="local"):
     app=Flask(__name__)
     app.config.from_object(config[config_key])
     csrf.init_app(app)

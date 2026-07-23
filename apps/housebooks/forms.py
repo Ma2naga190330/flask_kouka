@@ -11,9 +11,9 @@ class MoneyBookForm(FlaskForm):
     )
 
     comment = StringField(
-        "内訳",
+        "カテゴリー",
         validators=[
-            DataRequired(message="内訳は必須です")
+            DataRequired(message="カテゴリーは必須です")
         ]
     )
 

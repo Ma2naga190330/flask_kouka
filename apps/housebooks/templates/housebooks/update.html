@@ -13,7 +13,7 @@
         <span style="color: red;">{{error}}</span>
         {% endfor %}
         <p>
-            {{form.comment.label}}{{form.comment(placeholder="内訳",value=moneybooks.comment)}}
+            {{form.comment.label}}{{form.comment(placeholder="カテゴリー",value=moneybooks.comment)}}
         </p>
         {% for error in form.comment.errors %}
         <span style="color: red;">{{error}}</span>
