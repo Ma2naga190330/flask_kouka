@@ -6,9 +6,11 @@
     <h2>create</h2>
     <form action="{{url_for('housebooks.create')}}" method="POST" novalidate="novalidate">
         {{form.csrf_token}}
-        <p>
-            {{form.account_id.label}}{{form.account_id(placeholder="アカウントid")}}
-        </p>
+        {% if current_user.is_authenticated %}
+            <p>{{form.account_id.label}}{{form.account_id(placeholder="アカウントid", value=current_user.id)}}</p>
+        {% else %}
+            <p>{{form.account_id.label}}{{form.account_id(placeholder="アカウントid")}}</p>
+        {% endif %}
         {% for error in form.account_id.errors %}
         <span style="color: red;">{{error}}</span>
         {% endfor %}
