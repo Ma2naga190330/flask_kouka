@@ -7,6 +7,9 @@ venv/
 # 設計書等
 設計書/
 
+# 学習済みモデル
+*.pt
+
 # DB
 *.sqlite
 migrations/

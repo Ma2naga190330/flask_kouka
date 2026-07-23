@@ -20,9 +20,10 @@ def index():
 def read():
     form = DeleteForm()
     total = 0
-    moneybooks = MoneyBooks.query.all()
+    moneybooks = MoneyBooks.query.filter_by(deleted=False).all()
     total = db.session.query(func.sum(MoneyBooks.price)).first()
-    return render_template("housebooks/read.html", moneybooks=moneybooks, total=total[0], delform = form)
+    total = db.session.query(func.sum(MoneyBooks.price)).filter(MoneyBooks.deleted == False) or 0
+    return render_template("housebooks/read.html", moneybooks=moneybooks, total=total[0][0], delform = form)
 
 @hb.route("/create", methods=["GET","POST"])
 def create():
@@ -41,10 +42,11 @@ def create():
 @hb.route("/read/delete/<moneybooks_id>",methods=["GET","POST"])
 @login_required
 def delete(moneybooks_id):
-    print("------------------------>"+moneybooks_id)
+    print("delete------------------------>"+moneybooks_id)
     moneybooks = MoneyBooks.query.filter_by(id=moneybooks_id).first()
     print(moneybooks)
-    db.session.delete(moneybooks)
+    moneybooks.deleted = True
+    db.session.add(moneybooks)
     db.session.commit()
     return redirect(url_for("housebooks.read"))
 
