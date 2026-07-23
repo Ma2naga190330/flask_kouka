@@ -58,5 +58,5 @@ def login():
 
 @ac.route("/logout")
 def logout():
-    logout_user
+    logout_user()
     return redirect(url_for("accounts.login"))

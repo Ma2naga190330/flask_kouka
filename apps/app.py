@@ -15,7 +15,7 @@ csrf = CSRFProtect()
 
 # login
 login_manager = LoginManager()
-login_manager.login_view ="ac.signup"
+login_manager.login_view ="accounts.signup"
 login_manager.login_message=""
 
 def create_app(config_key):
