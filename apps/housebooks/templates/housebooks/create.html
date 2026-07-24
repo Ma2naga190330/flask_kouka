@@ -15,9 +15,15 @@
         <span style="color: red;">{{error}}</span>
         {% endfor %}
         <p>
-            {{form.comment.label}}：<br>{{form.comment(placeholder="カテゴリー")}}
+            {{form.comment.label}}：<br>{{form.comment(placeholder="内訳")}}
         </p>
         {% for error in form.comment.errors %}
+        <span style="color: red;">{{error}}</span>
+        {% endfor %}
+        <p>
+            {{form.category_id.label}}：<br>{{form.category_id}}
+        </p>
+        {% for error in form.category_id.errors %}
         <span style="color: red;">{{error}}</span>
         {% endfor %}
         <p>

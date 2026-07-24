@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import PasswordField,StringField,SubmitField,IntegerField
-from wtforms.validators import DataRequired,Email,Length
+from wtforms import StringField,SubmitField,IntegerField,SelectField
+from wtforms.validators import DataRequired
 
 class MoneyBookForm(FlaskForm):
     account_id = IntegerField(
@@ -11,10 +11,17 @@ class MoneyBookForm(FlaskForm):
     )
 
     comment = StringField(
-        "カテゴリー",
+        "内訳",
         validators=[
-            DataRequired(message="カテゴリーは必須です")
+            DataRequired(message="内訳は必須です")
         ]
+    )
+
+    # プルダウン形式で選択
+    category_id = SelectField(
+        'カテゴリ',
+        coerce=int,
+        validators=[DataRequired(message="カテゴリを選択してください")]
     )
 
     price = IntegerField(
@@ -24,7 +31,7 @@ class MoneyBookForm(FlaskForm):
         ]
     )
 
-    submit = SubmitField("新規登録")
+    submit = SubmitField("登録")
 
 # csrf回避のため
 class DeleteForm(FlaskForm):
