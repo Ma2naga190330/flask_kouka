@@ -25,9 +25,9 @@ def create_app(config_key="local"):
     app.config.from_object(config[config_key])
     csrf.init_app(app)
     db.init_app(app)
+    migrate.init_app(app,db)
     # dbの接続を手動で設定
     app.cli.add_command(db_cli)
-    migrate.init_app(app,db)
     login_manager.init_app(app)
 
     from apps.account_manager import views as ac_view
