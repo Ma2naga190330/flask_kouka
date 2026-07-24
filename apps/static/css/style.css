@@ -1,12 +1,12 @@
 .content {
     display: block;
     width: 100%;
-    max-width: 600px;    /* 👈 コンテンツの横幅（小さめにするとより「中央感」が出ます） */
-    margin: 40px auto;   /* 👈 これで枠組み全体を画面の「中央」に寄せる */
-    padding: 0 24px;     /* スマホ表示時などの画面端の余白 */
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 0 24px;
     box-sizing: border-box;
 
-    text-align: left;    /* 👈 中の文章やフォームは「左揃え」にする */
+    text-align: left;
 }
 
 /* リセット */
@@ -24,16 +24,11 @@
     height: 60px;
     display: flex;
     align-items: center;
-    /* ⭕️ 左（システム名）と右（メニュー）を両端に配置 */
     justify-content: space-between; 
     position: sticky;
     top: 0;
     z-index: 1000;
 }
-
-/* -----------------------------------
-   左側：システム名（left-instance）
-   ----------------------------------- */
 .left-instance {
     display: flex;
     align-items: center;
@@ -54,9 +49,6 @@
     opacity: 0.8;
 }
 
-/* -----------------------------------
-   右側：ナビゲーション（navbar-nav）
-   ----------------------------------- */
 .navbar-nav {
     display: flex;
     align-items: center;
@@ -105,24 +97,24 @@ a.nav-link:hover {
     color: #ffffff;
 }
 .content a {
-    display: inline-block;      /* ボタンとして縦横幅を維持 */
-    padding: 8px 16px;         /* ボタンの内側余白 */
-    background-color: #1a73e8; /* 背景色（青） */
-    color: #ffffff;            /* 文字色（白） */
-    text-decoration: none;     /* 下線を消す */
-    border-radius: 4px;        /* 軽い角丸 */
-    font-size: 0.95rem;        /* 文字サイズ */
-    text-align: center;        /* 文字を中央揃え */
+    display: inline-block; 
+    padding: 8px 16px;
+    background-color: #1a73e8; 
+    color: #ffffff; 
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    text-align: center;  
 }
 .btn-style {
-    display: inline-block;      /* ボタンとして縦横幅を維持 */
-    padding: 8px 16px;         /* ボタンの内側余白 */
-    background-color: #1a73e8; /* 背景色（青） */
-    color: #ffffff;            /* 文字色（白） */
-    text-decoration: none;     /* 下線を消す */
-    border-radius: 4px;        /* 軽い角丸 */
-    font-size: 0.95rem;        /* 文字サイズ */
-    text-align: center;        /* 文字を中央揃え */
+    display: inline-block; 
+    padding: 8px 16px; 
+    background-color: #1a73e8; 
+    color: #ffffff; 
+    text-decoration: none; 
+    border-radius: 4px;    
+    font-size: 0.95rem;      
+    text-align: center; 
 }
 
 /*  テーブルの余白 */
