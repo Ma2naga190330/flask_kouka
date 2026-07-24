@@ -20,9 +20,7 @@ migrate = Migrate()
 login_manager = LoginManager()
 login_manager.login_view ="accounts.signup"
 login_manager.login_message=""
-print("apps.app imported")
 def create_app(config_key="local"):
-    print("create_app executed")
     app=Flask(__name__)
     app.config.from_object(config[config_key])
     csrf.init_app(app)

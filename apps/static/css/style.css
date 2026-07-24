@@ -1,3 +1,4 @@
+/* 中身の要素部分 */
 .content {
     display: block;
     width: 100%;
@@ -9,7 +10,7 @@
     text-align: left;
 }
 
-/* リセット */
+/* ヘッダーの新規登録とログインの部分 */
 .header ul {
     list-style: none;
     margin: 0;
@@ -29,25 +30,22 @@
     top: 0;
     z-index: 1000;
 }
+/* ヘッダーの左の見出し */
 .left-instance {
     display: flex;
     align-items: center;
 }
-
 .left-instance p,
 .left-instance a {
     margin: 0;
-    font-size: 1.25rem;       /* 少し大きめのフォント */
-    font-weight: 700;          /* 太字で強調 */
-    color: #1a73e8;            /* メインカラー（ブルー系） */
+    font-size: 1.25rem;    
+    font-weight: 700;      
+    color: #1a73e8; 
     text-decoration: none;
     letter-spacing: 0.5px;
 }
 
-/* もしトップページへのリンクにする場合 */
-.left-instance a:hover {
-    opacity: 0.8;
-}
+/* ナビゲーションの部分 */
 
 .navbar-nav {
     display: flex;
@@ -96,6 +94,7 @@ a.nav-link:hover {
     background-color: #1557b0;
     color: #ffffff;
 }
+/* リンクをボタンに見せる */
 .content a {
     display: inline-block; 
     padding: 8px 16px;
@@ -106,12 +105,15 @@ a.nav-link:hover {
     font-size: 0.95rem;
     text-align: center;  
 }
+/* input type=submit を上と同じボタンに見せる */
 .btn-style {
     display: inline-block; 
     padding: 8px 16px; 
     background-color: #1a73e8; 
     color: #ffffff; 
     text-decoration: none; 
+    /* もともとある黒枠線の削除 */
+    border: none;
     border-radius: 4px;    
     font-size: 0.95rem;      
     text-align: center; 

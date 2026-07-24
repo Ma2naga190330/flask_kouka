@@ -7,7 +7,7 @@
         <section>
             <form action="{{url_for('accounts.login')}}" method="POST" novalidate="novalidate">
                 {% for message in get_flashed_messages() %}
-                <div class="dt-auth-flash">{{message}}</div>
+                <div style="color: red;">{{message}}</div>
                 {% endfor %}
                 {{form.csrf_token}}
                 <p>{{form.email(class="form-control dt-auth-input",placeholder="メールアドレス")}}</p>
